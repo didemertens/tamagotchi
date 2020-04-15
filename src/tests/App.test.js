@@ -25,3 +25,15 @@ test('renders play button', () => {
   const playButton = findByTestAttr(wrapper, 'play-button')
   expect(playButton.length).toBe(1)
 })
+
+test('renders feed button', () => {
+  const wrapper = setup()
+  const feedButton = findByTestAttr(wrapper, 'feed-button')
+  expect(feedButton.length).toBe(1)
+})
+
+test('renders feed button', () => {
+  const wrapper = setup()
+  const progressBar = findByTestAttr(wrapper, 'progress-bar')
+  expect(progressBar.length).toBe(1)
+})

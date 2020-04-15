@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import EnzymeAdapater from 'enzyme-adapter-react-16'
-import App from './App'
+import App from '../App'
 
 Enzyme.configure({ adapter: new EnzymeAdapater() })
 
@@ -18,4 +18,10 @@ test('renders component without error', () => {
   const wrapper = setup()
   const appComponent = findByTestAttr(wrapper, 'app-component')
   expect(appComponent.length).toBe(1)
+})
+
+test('renders play button', () => {
+  const wrapper = setup()
+  const playButton = findByTestAttr(wrapper, 'play-button')
+  expect(playButton.length).toBe(1)
 })

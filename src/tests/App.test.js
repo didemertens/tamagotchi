@@ -48,14 +48,12 @@ test('clicking play button increases friendship', () => {
   const wrapper = setup()
   const playButton = findByTestAttr(wrapper, 'play-button')
   playButton.simulate('click')
-  const friendshipDisplay = findByTestAttr(wrapper, 'display-friendship')
-  expect(friendshipDisplay.text()).toContain('10')
+  expect(wrapper.state('friendship')).toBe(10)
 })
 
 test('clicking feed button decreases hunger', () => {
   const wrapper = setup()
   const feedButton = findByTestAttr(wrapper, 'feed-button')
   feedButton.simulate('click')
-  const hungerDisplay = findByTestAttr(wrapper, 'display-hunger')
-  expect(hungerDisplay.text()).toContain('90')
+  expect(wrapper.state('hunger')).toBe(90)
 })

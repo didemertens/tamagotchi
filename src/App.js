@@ -1,6 +1,11 @@
 import React from 'react'
 import Button from './components/Button'
 import { FriendshipProgressBar, HungerProgressBar } from './components/ProgressBar'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  padding: 20px;
+`
 
 class App extends React.Component {
   state = {
@@ -24,12 +29,14 @@ class App extends React.Component {
     return (
       <div className="App" data-test="app-component">
         <h1>Unicorn <span role="img" aria-label="heart">♥️</span></h1>
-        <Button btnText="Play" onClick={() => this.playBtnClick()} data-test="play-button" />
-        <p data-test="display-friendship">{this.state.friendship}</p>
-        <FriendshipProgressBar blueProgress={this.state.friendship} data-test="friendship-progress-bar"/>
-        <Button btnText="Feed" onClick={() => this.feedBtnClick()} data-test="feed-button" />
-        <p data-test="display-hunger">{this.state.hunger}</p>
-        <HungerProgressBar pinkProgress={this.state.hunger} data-test="hunger-progress-bar"/>
+        <Container>
+          <Button btnText="Play" onClick={() => this.playBtnClick()} data-test="play-button" />
+          <FriendshipProgressBar blueProgress={this.state.friendship} data-test="friendship-progress-bar"/>
+        </Container>
+        <Container>
+          <Button btnText="Feed" onClick={() => this.feedBtnClick()} data-test="feed-button" />
+          <HungerProgressBar pinkProgress={this.state.hunger} data-test="hunger-progress-bar"/>
+        </Container>
         <img src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/151699563,width=178,height=178,version=1550187640/cute-music-unicorn-mythical-animal-kawaii-chibi.png" alt="Unicorn"/>
       </div>
   )}

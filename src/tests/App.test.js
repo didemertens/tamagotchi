@@ -44,7 +44,7 @@ test('renders the hunger progress bar', () => {
   expect(progressBar.length).toBe(1)
 })
 
-test('when clicking on play button, friendship increases', () => {
+test('clicking play button increases friendship', () => {
   const wrapper = setup()
   const playButton = findByTestAttr(wrapper, 'play-button')
   playButton.simulate('click')
@@ -52,10 +52,10 @@ test('when clicking on play button, friendship increases', () => {
   expect(friendshipDisplay.text()).toContain('10')
 })
 
-test('when clicking on feed button, hunger decreases', () => {
+test('clicking feed button decreases hunger', () => {
   const wrapper = setup()
-  const instance = wrapper.instance()
-  instance.feedBtnClick()
+  const feedButton = findByTestAttr(wrapper, 'feed-button')
+  feedButton.simulate('click')
   const hungerDisplay = findByTestAttr(wrapper, 'display-hunger')
   expect(hungerDisplay.text()).toContain('90')
 })

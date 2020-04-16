@@ -18,7 +18,7 @@ const BlueBtn = styled.button`
 
 const Button = ({ btnText, btnClick }) => {
   return (
-  <BlueBtn onClick={btnClick}>{btnText}</BlueBtn>
+  <BlueBtn data-test="button" onClick={btnClick}>{btnText}</BlueBtn>
 )}
 
 export default Button

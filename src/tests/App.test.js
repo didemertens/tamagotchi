@@ -2,7 +2,6 @@ import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import EnzymeAdapater from 'enzyme-adapter-react-16'
 import App from '../App'
-import Button from '../components/Button'
 
 Enzyme.configure({ adapter: new EnzymeAdapater() })
 
@@ -47,10 +46,8 @@ test('renders the hunger progress bar', () => {
 
 test('when clicking on play button, friendship increases', () => {
   const wrapper = setup()
-  const buttonWrapper = shallow(<Button />)
-  const playButton = findByTestAttr(buttonWrapper, 'button')
+  const playButton = findByTestAttr(wrapper, 'play-button')
   playButton.simulate('click')
-  console.log(wrapper.debug())
   const friendshipDisplay = findByTestAttr(wrapper, 'display-friendship')
   expect(friendshipDisplay.text()).toContain('10')
 })

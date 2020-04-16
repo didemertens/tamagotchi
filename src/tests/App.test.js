@@ -51,3 +51,11 @@ test('when clicking on play button, friendship increases', () => {
   const friendshipDisplay = findByTestAttr(wrapper, 'display-friendship')
   expect(friendshipDisplay.text()).toContain('10')
 })
+
+test('when clicking on feed button, hunger decreases', () => {
+  const wrapper = setup()
+  const instance = wrapper.instance()
+  instance.feedBtnClick()
+  const hungerDisplay = findByTestAttr(wrapper, 'display-hunger')
+  expect(hungerDisplay.text()).toContain('90')
+})

@@ -57,3 +57,18 @@ test('clicking feed button decreases hunger', () => {
   feedButton.simulate('click')
   expect(wrapper.state('hunger')).toBe(90)
 })
+
+
+test('clicking play button increases amount of friendship clicks', () => {
+  const wrapper = setup()
+  const playButton = findByTestAttr(wrapper, 'play-button')
+  playButton.simulate('click')
+  expect(wrapper.state('friendshipClicks')).toBe(1)
+})
+
+test('clicking feed button increases amount of hunger clicks', () => {
+  const wrapper = setup()
+  const feedButton = findByTestAttr(wrapper, 'feed-button')
+  feedButton.simulate('click')
+  expect(wrapper.state('hungerClicks')).toBe(1)
+})

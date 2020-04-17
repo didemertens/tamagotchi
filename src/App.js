@@ -10,18 +10,28 @@ const Container = styled.div`
 class App extends React.Component {
   state = {
     friendship: 0,
-    hunger: 100
+    friendshipMessage: '',
+    hunger: 100,
+    friendshipClicks: 0,
+    hungerClicks: 0
   }
 
   playBtnClick = () => {
-    if (this.state.friendship < 100) {
+    if (this.state.friendship < 100 && this.state.friendshipClicks < 2) {
       this.setState({ friendship: this.state.friendship + 10})
+      this.setState({ friendshipClicks: this.state.friendshipClicks + 1 })
+    }
+    if (this.state.friendshipClicks === 2) {
+      this.setState({ friendshipMessage: "You've used all your clicks for today!"})
+    } else if (this.state.friendship === 100) {
+      this.setState({ friendshipMessage: "You're already best friends!"})
     }
   }
 
   feedBtnClick = () => {
     if (this.state.hunger > 0) {
       this.setState({ hunger: this.state.hunger - 10})
+      this.setState({ hungerClicks: this.state.hungerClicks + 1 })
     } 
   }
 
@@ -30,6 +40,7 @@ class App extends React.Component {
       <div className="App" data-test="app-component">
         <h1>Unicorn <span role="img" aria-label="heart">♥️</span></h1>
         <Container>
+          <p>{this.state.friendshipMessage}</p>
           <Button btnText="Play" onClick={() => this.playBtnClick()} data-test="play-button" />
           <FriendshipProgressBar blueProgress={this.state.friendship} data-test="friendship-progress-bar"/>
         </Container>

@@ -13,7 +13,8 @@ class App extends React.Component {
     friendshipMessage: '',
     hunger: 100,
     friendshipClicks: 0,
-    hungerClicks: 0
+    hungerClicks: 0,
+    hungerMessage: ''
   }
 
   playBtnClick = () => {
@@ -29,10 +30,15 @@ class App extends React.Component {
   }
 
   feedBtnClick = () => {
-    if (this.state.hunger > 0) {
+    if (this.state.hunger > 0 && this.state.hungerClicks < 2) {
       this.setState({ hunger: this.state.hunger - 10})
       this.setState({ hungerClicks: this.state.hungerClicks + 1 })
     } 
+    if (this.state.hungerClicks === 2) {
+      this.setState({ friendshipMessage: "You've used all your clicks for today!"})
+    } else if (this.state.hunger === 0) {
+      this.setState({ friendshipMessage: "Not hungry right now!"})
+    }
   }
 
   render() {
@@ -45,6 +51,7 @@ class App extends React.Component {
           <FriendshipProgressBar blueProgress={this.state.friendship} data-test="friendship-progress-bar"/>
         </Container>
         <Container>
+          <p>{this.state.hungerMessage}</p>
           <Button btnText="Feed" onClick={() => this.feedBtnClick()} data-test="feed-button" />
           <HungerProgressBar pinkProgress={this.state.hunger} data-test="hunger-progress-bar"/>
         </Container>
